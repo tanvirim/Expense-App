@@ -1,7 +1,7 @@
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { endpoint } from "../constants";
 
@@ -24,6 +24,14 @@ const submitHandler = async(values)=> {
     
   }
 }
+
+  //Prevent for Login User
+  useEffect(()=> {
+    if(localStorage.getItem("data")){
+      navigate("/")
+    }
+  } , [navigate])
+  //Prevent for Login User
 
   return (
     <div className="register-page">
