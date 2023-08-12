@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const dotenv = require("dotenv") 
 const connectDB = require("./config/connectDB")
 const userRoutes = require("./routes/userRoute")
+const transactionRoute = require("./routes/transactionRoute")
 
 
 
@@ -27,6 +28,7 @@ app.use(cors())
 
 //routes
 app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/transections', transactionRoute)
 
 
 //port  

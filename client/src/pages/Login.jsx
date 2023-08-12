@@ -58,7 +58,7 @@ useEffect(()=> {
 
         <div className="d-flex flex-column gap-3">
           <Link to="/register"> Not Registered ? Click Here to Register</Link>
-          <button className="btn btn-primary"> Login</button>
+          <button type="submit" className="btn btn-primary"> Login</button>
         </div>
       </Form>
     </div>

@@ -49,7 +49,7 @@ const Header = () => {
             <ul className="navbar-nav mb-2 mb-lg-0 ms-auto p-1 d-flex align-items-center">
               <li className="nav-item me-3">{loginUser && loginUser.name}</li>
               <li className="nav-item">
-                <button className="btn btn-primary" onClick={logoutHandler}>Logout</button>
+                <button className="btn btn-danger" onClick={logoutHandler}>Logout</button>
               </li>
             </ul>
           </div>

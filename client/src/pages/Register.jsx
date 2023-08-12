@@ -50,7 +50,7 @@ const submitHandler = async(values)=> {
 
         <div className="d-flex flex-column gap-3">
           <Link to="/login"> Already Registered ? Click Here to Login</Link>
-          <button className="btn btn-primary"> Register</button>
+          <button type="submit" className="btn btn-primary"> Register</button>
         </div>
       </Form>
     </div>
