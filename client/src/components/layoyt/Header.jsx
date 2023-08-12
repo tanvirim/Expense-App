@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+ import { message} from 'antd'
 const Header = () => {
 
   //Hooks
@@ -22,9 +22,10 @@ const Header = () => {
 //other constants
   const logoutHandler = ()=> {
     localStorage.removeItem("data")
+    message.success("logout successful")
     navigate("/login")
+    
   }
-
   //other constants
   return (
     <>
