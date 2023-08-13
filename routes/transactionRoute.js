@@ -8,7 +8,7 @@ const router = express.Router()
 //routers
 //POST || LOGIN
 
-router.get('/get-transections',getAllTransaction )
+router.post('/get-transections',getAllTransaction )
 
 //POST || REGISTER
 router.post('/add-transection',addTransaction )

@@ -2,6 +2,13 @@ const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema(
   {
+
+    //userId will be provided from localstorage
+    userId: {
+      type: String,
+      required: [true, 'userId is required'],
+
+    },
     amount: {
       type: Number,
       required: [true, 'Amount is required'],
