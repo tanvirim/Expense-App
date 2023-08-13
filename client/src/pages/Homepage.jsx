@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
 import Layout from "../components/layoyt/Layout";
-import { message, Select, Table, DatePicker } from "antd";
+import { message, Table } from "antd";
 import Spinner from "../components/Spinner";
 import { endpoint } from "../constants";
 import axios from "axios";
 import TransectionModal from "./TransectionModal";
 import moment from "moment";
+import FilterTransection from "../components/FilterTransection";
 
 const Homepage = () => {
-  const { RangePicker } = DatePicker;
   const [showModal, setshowModal] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
   const [allTransections, setAllTransections] = useState([]);
@@ -84,63 +84,19 @@ const Homepage = () => {
 
   return (
     <Layout>
+      
       {showSpinner && <Spinner />}
-      <div className="filters">
-        <div>
-          <h6>Select Frequency</h6>
-          <Select value={frequency} onChange={(values) => setFrequency(values)}>
-            <Select.Option value="1">Today </Select.Option>
-            <Select.Option value="7">Last 7 Days </Select.Option>
-            <Select.Option value="30"> Last 30 Days </Select.Option>
-            <Select.Option value="365"> Last 365 Days </Select.Option>
-            <Select.Option value="custom"> Custom </Select.Option>
-          </Select>
 
-          {frequency === "custom" && (
-            <RangePicker
-              value={selectedDate}
-              onChange={(values) => setSelectedDate(values)}
-            />
-          )}
-        </div>
-
-        <div>
-          <h6>Select Type</h6>
-          <Select value={type} onChange={(values) => setType(values)}>
-            <Select.Option value="all">All </Select.Option>
-            <Select.Option value="Income">Income</Select.Option>
-            <Select.Option value="Expense"> Expense </Select.Option>
-          </Select>
-        </div>
-
-        <div>
-          <h6>Select Category</h6>
-          <Select value={category} onChange={(values) => setCategory(values)}>
-            <Select.Option value="all">All </Select.Option>
-            <Select.Option value="Salary">Salary</Select.Option>
-            <Select.Option value="Tip">Tip</Select.Option>
-            <Select.Option value="Project">Project</Select.Option>
-            <Select.Option value="Food">Food</Select.Option>
-            <Select.Option value="Movie">Movie</Select.Option>
-            <Select.Option value="Bills">Bills</Select.Option>
-            <Select.Option value="Medical">Medical</Select.Option>
-            <Select.Option value="Fee">Fee</Select.Option>
-            <Select.Option value="Tax">Tax</Select.Option>
-            <Select.Option value="Transport">Transport</Select.Option>
-            <Select.Option value="Grocery">Grocery</Select.Option>
-          </Select>
-        </div>
-
-        <div>
-          {" "}
-          <button
-            className="btn btn-primary"
-            onClick={() => setshowModal(true)}
-          >
-            Add New
-          </button>
-        </div>
-      </div>
+      <FilterTransection
+        frequency={frequency}
+        setFrequency={setFrequency}
+        type={type}
+        setType={setType}
+        category={category}
+        setCategory={setCategory}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
 
       <div className="content">
         {allTransections.length > 0 ? (
