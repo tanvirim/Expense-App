@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Modal, Form, Input, DatePicker, Select} from "antd";
+import { Modal, Form, Input,  Select} from "antd";
 import moment from "moment";
 import Spinner from "../components/Spinner";
 
@@ -75,7 +75,7 @@ const TransectionModal = ({showModal, setshowModal, submitHandler,showSpinner}) 
             initialValue={moment()}
             rules={[{ required: true, message: "Date is required" }]}
           >
-            <DatePicker />
+            <Input type="date"/>
           </Form.Item>
           <div className="d-flex justify-content-end">
             <button

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { UnorderedListOutlined, AreaChartOutlined } from "@ant-design/icons";
 import { Select, DatePicker } from "antd";
 
 const FilterTransection = ({
@@ -12,6 +12,8 @@ const FilterTransection = ({
   category,
   setCategory,
   setshowModal,
+  viewData,
+  setViewData,
 }) => {
   const { RangePicker } = DatePicker;
   return (
@@ -59,6 +61,15 @@ const FilterTransection = ({
           <Select.Option value="Transport">Transport</Select.Option>
           <Select.Option value="Grocery">Grocery</Select.Option>
         </Select>
+      </div>
+
+      <div className="d-flex switch-icons gap-3">
+        <div className = {`mx-2 ${viewData==="table" ? "active-icon" : "inactive-icon"}`} >
+          <UnorderedListOutlined onClick={() => setViewData("table")} />
+        </div>
+        <div className = {`mx-2 ${viewData==="analytic" ? "active-icon" : "inactive-icon"}`}>
+          <AreaChartOutlined onClick={() => setViewData("analytic")} />
+        </div>
       </div>
 
       <div>

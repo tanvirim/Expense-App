@@ -8,6 +8,7 @@ import axios from "axios";
 import TransectionModal from "./TransectionModal";
 import moment from "moment";
 import FilterTransection from "../components/FilterTransection";
+import Analytics from "../components/layoyt/Analytics";
 
 const Homepage = () => {
   const [showModal, setshowModal] = useState(false);
@@ -17,6 +18,7 @@ const Homepage = () => {
   const [selectedDate, setSelectedDate] = useState([]);
   const [type, setType] = useState("all");
   const [category, setCategory] = useState("all");
+  const [viewData,setViewData] =useState("table")
   const columns = [
     {
       title: "Date",
@@ -84,7 +86,7 @@ const Homepage = () => {
 
   return (
     <Layout>
-      
+
       {showSpinner && <Spinner />}
 
       <FilterTransection
@@ -96,14 +98,15 @@ const Homepage = () => {
         setCategory={setCategory}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        viewData={viewData}
+        setViewData={setViewData}
+        setshowModal={setshowModal}
       />
 
       <div className="content">
-        {allTransections.length > 0 ? (
-          <Table columns={columns} dataSource={allTransections} />
-        ) : (
-          <p>No transactions available.</p>
-        )}
+        
+          {viewData === "table" ? <Table columns={columns} dataSource={allTransections} /> : <Analytics allTransections={allTransections}/>}
+      
       </div>
 
       <TransectionModal

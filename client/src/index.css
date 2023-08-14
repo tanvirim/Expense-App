@@ -32,3 +32,23 @@
 }
 
 /* Transection field */
+
+/* ANT Design Icon Deign */
+.anticon svg {
+  font-size: 20px;
+  cursor: pointer;
+  
+}
+.active-icon {
+color: black;
+
+}
+.inactive-icon {
+  color: rgb(152, 151, 151);
+}
+
+.switch-icons {
+  gap: 5px;
+  border: 3px solid rgba(36, 36, 36, 0.5);
+  padding: 5px;
+}
