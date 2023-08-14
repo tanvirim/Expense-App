@@ -2,6 +2,20 @@
 import { Progress } from "antd";
 
 const Analytics = ({ allTransections }) => {
+  const categories = [
+    "Salary",
+    "Tip",
+    "Project",
+    "Food",
+    "Movie",
+    "Bills",
+    "Medical",
+    "Fee",
+    "Tax",
+    "Transport",
+    "Grocery",
+  ];
+
   //total transections
   const totaltransections = allTransections.length;
   const totalIncome = allTransections.filter(
@@ -32,8 +46,9 @@ const Analytics = ({ allTransections }) => {
 
   return (
     <>
-      <div className="row m-3">
-        <div className="d-flex gap-5 ">
+
+<div className="row m-3 ">
+        <div className="d-flex gap-5 align-items-center justify-content-center">
           <div className="card">
             <div className="card-header">
               Total Transections: {totaltransections}
@@ -81,6 +96,62 @@ const Analytics = ({ allTransections }) => {
           </div>
         </div>
       </div>
+
+      <div className="row m-3 d-flex align-items-center justify-content-center">
+        <div className="col-md-4">
+          <h4>Categorywise Income</h4>
+          {categories.map((category) => {
+            const amount = allTransections
+              .filter(
+                (transaction) =>
+                  transaction.type === "Income" &&
+                  transaction.category === category
+              )
+              .reduce((acc, transaction) => acc + transaction.amount, 0);
+            return (
+              amount > 0 && (
+                <div className="card">
+                  <div className="card-body">
+                    <h5>{category}</h5>
+                    <Progress
+                      percent={((amount / totalIncomeTurnover) * 100).toFixed(
+                        0
+                      )}
+                    />
+                  </div>
+                </div>
+              )
+            );
+          })}
+        </div>
+        <div className="col-md-4">
+          <h4>Categorywise Expense</h4>
+          {categories.map((category) => {
+            const amount = allTransections
+              .filter(
+                (transaction) =>
+                  transaction.type === "Expense" &&
+                  transaction.category === category
+              )
+              .reduce((acc, transaction) => acc + transaction.amount, 0);
+            return (
+              amount > 0 && (
+                <div className="card">
+                  <div className="card-body">
+                    <h5>{category}</h5>
+                    <Progress
+                      percent={((amount / totalExpenseTurnover) * 100).toFixed(
+                        0
+                      )}
+                    />
+                  </div>
+                </div>
+              )
+            );
+          })}
+        </div>
+      </div>
+
     </>
   );
 };

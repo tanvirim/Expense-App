@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .content {
-  min-height: 80vh;
+  min-height: 100vh;
 } 
 
 .register-page{
@@ -52,3 +52,6 @@ color: black;
   border: 3px solid rgba(36, 36, 36, 0.5);
   padding: 5px;
 }
+
+
+/* progress */
