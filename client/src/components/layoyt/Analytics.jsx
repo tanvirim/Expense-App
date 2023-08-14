@@ -1,20 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Progress } from "antd";
+import { categories } from "../../constants";
 
 const Analytics = ({ allTransections }) => {
-  const categories = [
-    "Salary",
-    "Tip",
-    "Project",
-    "Food",
-    "Movie",
-    "Bills",
-    "Medical",
-    "Fee",
-    "Tax",
-    "Transport",
-    "Grocery",
-  ];
+
 
   //total transections
   const totaltransections = allTransections.length;

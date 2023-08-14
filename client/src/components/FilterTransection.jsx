@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { UnorderedListOutlined, AreaChartOutlined } from "@ant-design/icons";
 import { Select, DatePicker } from "antd";
+import { categories } from "../constants";
 
 const FilterTransection = ({
   frequency,
@@ -49,17 +50,7 @@ const FilterTransection = ({
         <h6>Select Category</h6>
         <Select value={category} onChange={(values) => setCategory(values)}>
           <Select.Option value="all">All </Select.Option>
-          <Select.Option value="Salary">Salary</Select.Option>
-          <Select.Option value="Tip">Tip</Select.Option>
-          <Select.Option value="Project">Project</Select.Option>
-          <Select.Option value="Food">Food</Select.Option>
-          <Select.Option value="Movie">Movie</Select.Option>
-          <Select.Option value="Bills">Bills</Select.Option>
-          <Select.Option value="Medical">Medical</Select.Option>
-          <Select.Option value="Fee">Fee</Select.Option>
-          <Select.Option value="Tax">Tax</Select.Option>
-          <Select.Option value="Transport">Transport</Select.Option>
-          <Select.Option value="Grocery">Grocery</Select.Option>
+          {categories.map(category => <Select.Option value={category} key={category}> {category} </Select.Option>)}
         </Select>
       </div>
 
