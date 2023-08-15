@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import { endpoint } from "../constants";
+
 import LoginImg from "../assets/login.jpg"
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Login = () => {
   const submitHandler = async (values) => {
     try {
       setShowSpinner(true);
-      const { data } = await axios.post(endpoint + "/users/login", values);
+      const { data } = await axios.post("/api/v1/users/login", values);
       localStorage.setItem(
         "data",
         JSON.stringify({ ...data.user, password: "" })

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import { endpoint } from "../constants";
+
 import RegImage from "../assets/pexels-karolina-grabowska-4386335.jpg";
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
   const submitHandler = async (values) => {
     try {
       setShowSpinner(true);
-      await axios.post(endpoint + "/users/register", values);
+      await axios.post("/api/v1/users/register", values);
       message.success("Registration Successfull");
       navigate("/login");
       setShowSpinner(false);
@@ -47,7 +47,7 @@ const Register = () => {
           <Form.Item
             label={<label style={{ color: "white" }}>Name</label>}
             name="name"
-            rules={[{ required: true, message: "Please enter your name" },{ type: "email", message: "Please enter a valid email" }]}
+            rules={[{ required: true, message: "Please enter your name" },{ type: "name", message: "Please enter a valid name" }]}
           >
             <Input type="text" />
           </Form.Item>
@@ -74,8 +74,8 @@ const Register = () => {
 
           <div className="d-flex flex-column gap-3">
             <Link to="/login"> <p style={{ color: 'white'}}>Already Registered ? Click Here to Login</p></Link>
-            <button type="submit" className="btn btn-primary">
-              {" "}
+            <button  className="btn btn-primary">
+              
               Register
             </button>
           </div>
