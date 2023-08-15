@@ -27,7 +27,7 @@ const Homepage = () => {
       dataIndex: "date",
       key: "date",
       render: (text) => (
-        <span>{moment(text).format("MMMM D, YYYY h:mm A")}</span>
+        <span>{moment(text).format("YYYY-MM-DD")}</span>
       ),
     },
     { title: "Amount", dataIndex: "amount", key: "amount" },
