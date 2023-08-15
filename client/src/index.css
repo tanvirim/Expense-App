@@ -7,12 +7,59 @@
   min-height: 100vh;
 } 
 
-.register-page{
+/* 
+Auth  */
+.register-container{
+  position: relative;
+  height: 100vh;
+
+}
+.register-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0) ;/* Adjust opacity here */
+  z-index: 1;
+}
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+}
+.register-title{
+  position: absolute;
+  top: 100px;
+}
+.register-image{
+  
+  object-fit: cover;
+  opacity: .3;
+  width: 100%;
+  height: 100%;
+  
+}
+.form-container{
+  height: 100%;
+  width: 60%;
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  padding: 20px;
 }
+
+
+
+
+
+
 .login-page{
   display: flex;
   justify-content: center;

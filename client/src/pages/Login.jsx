@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { endpoint } from "../constants";
+import LoginImg from "../assets/login.jpg"
 const Login = () => {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -37,13 +38,19 @@ const Login = () => {
   //Prevent for Login User
 
   return (
-    <div className="login-page">
-      <Form onFinish={submitHandler} className="login-form">
-        <h1 className="mb-4">Login Now!</h1>
-        {showSpinner && <Spinner />}
+    <div className="register-container">
+       <div className="register-overlay">
+       <div className="image-container">
+           <img src={LoginImg} alt="image" className="register-image" />
+         </div>
+         <div className="form-container">
+         {showSpinner && <Spinner />}
+         <Form onFinish={submitHandler} className="login-form">
+        <h3 className="mb-4" style={{ color: 'white' }}>Login</h3>
+        
 
         <Form.Item
-          label="Email"
+          label={<label style={{ color: "white" }}>Email</label>}
           name="email"
           rules={[
             { required: true, message: "Please enter your email" },
@@ -53,7 +60,7 @@ const Login = () => {
           <Input type="email" />
         </Form.Item>
         <Form.Item
-          label="Password"
+          label={<label style={{ color: "white" }}>Password</label>}
           name="password"
           rules={[
             { required: true, message: "Please enter your password" },
@@ -64,15 +71,19 @@ const Login = () => {
         </Form.Item>
 
         <div className="d-flex flex-column gap-3 align-items-center">
-          <Link to="/register" className="text-muted">
-            Not Registered? Click Here to Register
+          <Link to="/register" className="text-muted" >
+            <p style={{ color: 'white' }}>Not Registered? Click Here to Register</p>
           </Link>
           <Button type="primary" htmlType="submit" className="w-100">
             Login
           </Button>
         </div>
       </Form>
-    </div>
+        
+         </div>
+   
+       </div>
+       </div>
   );
 };
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { endpoint } from "../constants";
+import RegImage from "../assets/pexels-karolina-grabowska-4386335.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,46 +32,57 @@ const Register = () => {
   //Prevent for Login User
 
   return (
-    <div className="register-page">
+    <div className="register-container">
+ <h1 className="regiter-title">Manage your Expanse</h1>
+    <div className="register-overlay">
+    <div className="image-container">
+        <img src={RegImage} alt="image" className="register-image" />
+      </div>
+      <div className="form-container">
       {showSpinner && <Spinner />}
-      <Form onFinish={submitHandler}>
-        <h1>Register Now!</h1>
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[{ required: true, message: "Please enter your name" }]}
-        >
-          <Input type="text" />
-        </Form.Item>
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            { required: true, message: "Please enter your email" },
-            { type: "email", message: "Please enter a valid email" },
-          ]}
-        >
-          <Input type="email" />
-        </Form.Item>
-        <Form.Item
-          label="Pasword"
-          name="password"
-          rules={[
-            { required: true, message: "Please enter your password" },
-            { min: 6, message: "Password must be at least 6 characters" },
-          ]}
-        >
-          <Input type="password" />
-        </Form.Item>
 
-        <div className="d-flex flex-column gap-3">
-          <Link to="/login"> Already Registered ? Click Here to Login</Link>
-          <button type="submit" className="btn btn-primary">
-            {" "}
-            Register
-          </button>
-        </div>
-      </Form>
+     
+        <Form onFinish={submitHandler} >
+          <h3 style={{ color: 'white' }}>Register </h3>
+          <Form.Item
+            label={<label style={{ color: "white" }}>Name</label>}
+            name="name"
+            rules={[{ required: true, message: "Please enter your name" },{ type: "email", message: "Please enter a valid email" }]}
+          >
+            <Input type="text" />
+          </Form.Item>
+          <Form.Item
+            label={<label style={{ color: "white" }}>Email</label>}
+            name="email"
+            rules={[
+              { required: true, message: "Please enter your email" },
+              { type: "email", message: "Please enter a valid email" },
+            ]}
+          >
+            <Input type="email" />
+          </Form.Item>
+          <Form.Item
+            label={<label style={{ color: "white" }}>Password</label>}
+            name="password"
+            rules={[
+              { required: true, message: "Please enter your password" },
+              { min: 6, message: "Password must be at least 6 characters" },
+            ]}
+          >
+            <Input className="ant-input" type="password" />
+          </Form.Item>
+
+          <div className="d-flex flex-column gap-3">
+            <Link to="/login"> <p style={{ color: 'white'}}>Already Registered ? Click Here to Login</p></Link>
+            <button type="submit" className="btn btn-primary">
+              {" "}
+              Register
+            </button>
+          </div>
+        </Form>
+      </div>
+
+    </div>
     </div>
   );
 };
