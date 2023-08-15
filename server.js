@@ -34,7 +34,7 @@ app.use('/api/v1/transections', transactionRoute)
 app.use(express.static(path.join(__dirname +'./client/dist')))
 
 app.get('*', (req,res)=>{
-    res.sendFile('index.html', {root: 'dist'});
+    res.sendFile('index.html', {root: '/client/dist'});
 })
 
 //port  
