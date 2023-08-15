@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 const connectDB = require("./config/connectDB")
 const userRoutes = require("./routes/userRoute")
 const transactionRoute = require("./routes/transactionRoute")
-
+const path = require("path")
 
 
 //config dotenv file
@@ -30,6 +30,11 @@ app.use(cors())
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/transections', transactionRoute)
 
+//static
+app.use(express.static(path.join(__dirname, './client/dist')))
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname, '/client/dist/index.html'))
+})
 
 //port  
 const port = 8080 || process.env.PORT 
