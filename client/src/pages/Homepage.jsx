@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../components/layoyt/Layout";
 import { message, Table, Tooltip } from "antd";
 import Spinner from "../components/Spinner";
-import { endpoint } from "../constants";
+
 import axios from "axios";
 import TransectionModal from "./TransectionModal";
 import moment from "moment";
@@ -62,8 +62,7 @@ const Homepage = () => {
     try {
       const { _id } = JSON.parse(localStorage.getItem("data"));
       setShowSpinner(true);
-      const transections = await axios.post(
-        endpoint + "/transections/get-transections",
+      const transections = await axios.post("/api/v1/transections/get-transections",
         {
           userId: _id,
           frequency,
@@ -94,7 +93,7 @@ const Homepage = () => {
       const { _id } = JSON.parse(localStorage.getItem("data"));
       setShowSpinner(true);
       if (editable) {
-        await axios.put(endpoint + "/transections/edit-transection", {
+        await axios.put("/api/v1/transections/edit-transection", {
           payload: {
             ...values,
             userId: _id,
@@ -106,7 +105,7 @@ const Homepage = () => {
         setshowModal(false);
         setEditable(null);
       } else {
-        await axios.post(endpoint + "/transections/add-transection", {
+        await axios.post("/api/v1/transections/add-transection", {
           ...values,
           userId: _id,
         });
@@ -133,7 +132,7 @@ const Homepage = () => {
   const handleDelete = async (record) => {
     try {
       setShowSpinner(true);
-      await axios.delete(endpoint + "/transections/delete-transection", {
+      await axios.delete("/api/v1/transections/delete-transection", {
         data: {
           transectionId: record._id,
         },
