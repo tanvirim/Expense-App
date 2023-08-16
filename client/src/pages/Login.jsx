@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 
-import LoginImg from "../assets/login.jpg"
+
 const Login = () => {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -41,7 +41,7 @@ const Login = () => {
     <div className="register-container">
        <div className="register-overlay">
        <div className="image-container">
-           <img src={LoginImg} alt="image" className="register-image" />
+           <img src="https://www.orangemantra.com/blog/wp-content/uploads/2021/08/expense-tracking-app.png" alt="image" className="register-image" />
          </div>
          <div className="form-container">
          {showSpinner && <Spinner />}
