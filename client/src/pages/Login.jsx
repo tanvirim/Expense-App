@@ -29,7 +29,7 @@ const Login = () => {
     }
   };
 
-  //Prevent for Login User
+  //Prevent for Logged in User
   useEffect(() => {
     if (localStorage.getItem("data")) {
       navigate("/");

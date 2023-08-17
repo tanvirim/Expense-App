@@ -4,8 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 
-import RegImage from "../assets/pexels-karolina-grabowska-4386335.jpg";
-
 const Register = () => {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -36,7 +34,10 @@ const Register = () => {
  <h1 className="regiter-title">Manage your Expanse</h1>
     <div className="register-overlay">
     <div className="image-container">
-        <img src={RegImage} alt="image" className="register-image" />
+        <img 
+        src='https://www.orangemantra.com/blog/wp-content/uploads/2021/08/expense-tracking-app.png'
+
+         alt="image" className="register-image" />
       </div>
       <div className="form-container">
       {showSpinner && <Spinner />}
